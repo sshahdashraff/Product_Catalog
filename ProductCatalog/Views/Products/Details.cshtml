@@ -1,48 +1,37 @@
 ﻿@model ProductCatalog.Models.Product
-
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Product Details";
 }
 
-<h1>Details</h1>
+<div class="card shadow-lg border-0 rounded-4 mx-auto" style="max-width: 800px;">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+        <h3 class="mb-0"><i class="bi bi-box-seam"></i> Product Details</h3>
+        <span class="badge bg-light text-dark fs-6">@Model.Category?.Name</span>
+    </div>
+    <div class="card-body p-4">
+        <dl class="row fs-5">
+            <dt class="col-sm-4"><i class="bi bi-tag"></i> Name</dt>
+            <dd class="col-sm-8">@Model.Name</dd>
 
-<div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Sku)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Sku)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ReleaseDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ReleaseDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Category.Name)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+            <dt class="col-sm-4"><i class="bi bi-upc"></i> SKU</dt>
+            <dd class="col-sm-8">@Model.Sku</dd>
+
+            <dt class="col-sm-4"><i class="bi bi-cash-stack"></i> Price</dt>
+            <dd class="col-sm-8">$@Model.Price</dd>
+
+            <dt class="col-sm-4"><i class="bi bi-calendar-event"></i> Release Date</dt>
+            <dd class="col-sm-8">@Model.ReleaseDate.ToShortDateString()</dd>
+        </dl>
+    </div>
+    <div class="card-footer bg-light d-flex justify-content-end">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning btn-lg me-2 text-white">
+            <i class="bi bi-pencil-square"></i> Edit
+        </a>
+        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger btn-lg me-2">
+            <i class="bi bi-trash"></i> Delete
+        </a>
+        <a asp-action="Index" class="btn btn-outline-secondary btn-lg">
+            <i class="bi bi-arrow-left"></i> Back to List
+        </a>
+    </div>
 </div>

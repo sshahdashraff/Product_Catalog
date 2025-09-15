@@ -1,52 +1,61 @@
 ﻿@model ProductCatalog.Models.Product
-
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create Product";
 }
 
-<h1>Create</h1>
+<div class="card shadow-lg border-0 rounded-4">
+    <div class="card-header bg-success text-white">
+        <h3 class="mb-0"><i class="bi bi-plus-circle"></i> Add New Product</h3>
+    </div>
+    <div class="card-body p-4">
+        <form asp-action="Create" class="needs-validation" novalidate>
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
 
-<h4>Product</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-semibold"><i class="bi bi-box"></i> Product Name</label>
+                    <input asp-for="Name" class="form-control form-control-lg shadow-sm" placeholder="Enter product name" required />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-semibold"><i class="bi bi-upc"></i> SKU</label>
+                    <input asp-for="Sku" class="form-control form-control-lg shadow-sm" placeholder="Unique code" required />
+                    <span asp-validation-for="Sku" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Sku" class="control-label"></label>
-                <input asp-for="Sku" class="form-control" />
-                <span asp-validation-for="Sku" class="text-danger"></span>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-semibold"><i class="bi bi-cash"></i> Price</label>
+                    <div class="input-group">
+                        <span class="input-group-text">$</span>
+                        <input asp-for="Price" class="form-control form-control-lg shadow-sm" placeholder="0.00" required />
+                    </div>
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-semibold"><i class="bi bi-calendar-date"></i> Release Date</label>
+                    <input asp-for="ReleaseDate" type="date" class="form-control form-control-lg shadow-sm" />
+                    <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold"><i class="bi bi-tags"></i> Category</label>
+                <select asp-for="CategoryId" asp-items="ViewBag.CategoryId" class="form-select form-select-lg shadow-sm"></select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ReleaseDate" class="control-label"></label>
-                <input asp-for="ReleaseDate" class="form-control" />
-                <span asp-validation-for="ReleaseDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CategoryId" class="control-label"></label>
-                <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-success btn-lg px-4 me-2">
+                    <i class="bi bi-check-circle"></i> Save
+                </button>
+                <a asp-action="Index" class="btn btn-outline-secondary btn-lg px-4">
+                    <i class="bi bi-x-circle"></i> Cancel
+                </a>
             </div>
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

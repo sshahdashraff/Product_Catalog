@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h2 class="mb-4">📊 Dashboard Overview</h2>
+
+<div class="row">
+    <!-- Card Example -->
+    <div class="col-md-4">
+        <div class="card shadow-sm border-0 rounded-3">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Total Products</h5>
+                <p class="display-6 text-primary">120</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card shadow-sm border-0 rounded-3">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Total Categories</h5>
+                <p class="display-6 text-success">15</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Chart -->
+<div class="card mt-4 shadow-sm border-0 rounded-3">
+    <div class="card-body">
+        <h5 class="card-title fw-bold">Products by Category</h5>
+        <canvas id="categoryChart" height="100"></canvas>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    const ctx = document.getElementById('categoryChart');
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Electronics', 'Clothing', 'Books', 'Sports'],
+            datasets: [{
+                data: [30, 20, 40, 10],
+                backgroundColor: ['#0d6efd', '#198754', '#ffc107', '#dc3545']
+            }]
+        }
+    });
+</script>
+}

@@ -1,31 +1,132 @@
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
+/* ===== GENERAL ===== */
 body {
-  margin-bottom: 60px;
+    font-family: "Segoe UI", Roboto, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+h1, h2, h3, h4 {
+    font-weight: 600;
+    color: #222;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+/* ===== NAVBAR ===== */
+.navbar {
+    border-bottom: 3px solid #0d6efd;
+}
+
+.navbar-brand {
+    font-size: 1.4rem;
+    letter-spacing: 0.5px;
+}
+
+.navbar-nav .nav-link {
+    margin-left: 10px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+    .navbar-nav .nav-link:hover {
+        color: #0d6efd !important;
+    }
+
+/* ===== CARDS ===== */
+.card {
+    border-radius: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+.card-title {
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.card-footer {
+    border-top: none;
+}
+
+/* ===== TABLES ===== */
+.table {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+    .table thead {
+        background: #0d6efd;
+        color: #fff;
+    }
+
+.table-hover tbody tr:hover {
+    background: rgba(13,110,253,0.05);
+    cursor: pointer;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    border-radius: 8px;
+    padding: 0.45rem 1rem;
+    font-weight: 500;
+}
+
+.btn-success {
+    background: linear-gradient(90deg, #198754, #20c997);
+    border: none;
+}
+
+.btn-warning {
+    background: linear-gradient(90deg, #ffc107, #ffb100);
+    border: none;
+    color: #222;
+}
+
+.btn-danger {
+    background: linear-gradient(90deg, #dc3545, #fd0e35);
+    border: none;
+}
+
+/* ===== FORMS ===== */
+form .form-label {
+    font-weight: 600;
+}
+
+form .form-control, form .form-select {
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    padding: 0.55rem 0.75rem;
+    transition: 0.2s;
+}
+
+    form .form-control:focus, form .form-select:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 5px rgba(13,110,253,0.3);
+    }
+
+/* ===== DASHBOARD METRICS ===== */
+.metric-card {
+    border-radius: 15px;
+    padding: 1.5rem;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.metric-products {
+    background: linear-gradient(135deg, #0d6efd, #6ea8fe);
+}
+
+.metric-categories {
+    background: linear-gradient(135deg, #198754, #20c997);
+}
+
+/* ===== FOOTER ===== */
+footer {
+    font-size: 0.9rem;
+    background: #111;
+    letter-spacing: 0.3px;
 }

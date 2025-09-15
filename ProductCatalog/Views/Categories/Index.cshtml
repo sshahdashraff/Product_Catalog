@@ -1,41 +1,42 @@
 ﻿@model IEnumerable<ProductCatalog.Models.Category>
-
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Categories";
 }
 
-<h1>Index</h1>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold text-secondary"><i class="bi bi-tags-fill"></i> Categories</h2>
+    <a class="btn btn-primary shadow-sm" href="/Categories/Create">
+        <i class="bi bi-plus-circle me-1"></i> Add New
+    </a>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="card shadow-sm border-0 rounded-3">
+    <div class="card-body p-0">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th class="text-center" style="width: 180px">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><span class="badge bg-primary fs-6">@item.Name</span></td>
+                    <td class="text-center">
+                        <a class="btn btn-sm btn-outline-warning me-1" 
+                           href="/Categories/Edit/@item.Id" data-bs-toggle="tooltip" title="Edit">
+                           <i class="bi bi-pencil-square"></i>
+                        </a>
+                        <a class="btn btn-sm btn-outline-danger" 
+                           href="/Categories/Delete/@item.Id" data-bs-toggle="tooltip" title="Delete">
+                           <i class="bi bi-trash-fill"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
